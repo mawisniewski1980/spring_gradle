@@ -5,15 +5,15 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @ToString
 public class Address {
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     private String street;

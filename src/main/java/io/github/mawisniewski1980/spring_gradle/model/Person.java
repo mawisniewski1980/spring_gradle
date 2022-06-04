@@ -6,15 +6,15 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @ToString
 public class Person {
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -24,8 +24,8 @@ public class Person {
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "address_id")
     private Address address;
-    private String email;
 
+    private String email;
     private String phone;
 
     @OneToOne(cascade = {CascadeType.ALL})

@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "203dd6ea-b4fa-4c64-8a5b-01d78f4cb940",
+		"name": "persons",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "persons",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"name\": \"DODANY\",\r\n        \"lastname\": \"BARTLOMIEJ\",\r\n        \"birthday\": \"1997-06-04\",\r\n        \"address\": {\r\n            \"street\": \"CZEKOLADOWA 33\",\r\n            \"zipCode\": \"40-100\",\r\n            \"city\": \"Katowice\",\r\n            \"state\": \"slaskie\"\r\n        },\r\n        \"email\": \"empty@gmail.pl\",\r\n        \"phone\": \"333222111\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"MASTERCARD\",\r\n            \"creditCardExpiry\": \"2501\",\r\n            \"cardType\": \"5490281237631330\"\r\n        },\r\n        \"iban\": \"PL61109024024141572275677956\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/persons",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persons/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"name\": \"ZMIENIONY\",\r\n        \"lastname\": \"BARTLOMIEJ\",\r\n        \"birthday\": \"1997-06-04\",\r\n        \"address\": {\r\n            \"street\": \"CZEKOLADOWA 33\",\r\n            \"zipCode\": \"40-100\",\r\n            \"city\": \"Katowice\",\r\n            \"state\": \"slaskie\"\r\n        },\r\n        \"email\": \"empty@gmail.pl\",\r\n        \"phone\": \"333222111\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"MASTERCARD\",\r\n            \"creditCardExpiry\": \"2501\",\r\n            \"cardType\": \"5490281237631330\"\r\n        },\r\n        \"iban\": \"PL61109024024141572275677956\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/persons/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"persons",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/persons",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persons/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/persons/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"persons",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "23"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		}
+	]
+}

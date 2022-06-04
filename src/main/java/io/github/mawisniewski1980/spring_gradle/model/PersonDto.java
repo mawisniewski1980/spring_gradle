@@ -1,4 +1,4 @@
-package io.github.mawisniewski1980.spring_gradle.person;
+package io.github.mawisniewski1980.spring_gradle.model;
 
 import io.github.mawisniewski1980.spring_gradle.model.Address;
 import io.github.mawisniewski1980.spring_gradle.model.Card;

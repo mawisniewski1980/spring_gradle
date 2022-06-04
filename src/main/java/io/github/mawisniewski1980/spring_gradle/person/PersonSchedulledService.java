@@ -27,61 +27,63 @@ public class PersonSchedulledService {
     private final List<String> names = List.of("MAX", "DAX", "KYZIO", "DYZIO", "ZYZIO", "ARNOLD");
     private final List<String> lastnames = List.of("KWIATKOWSKI", "LIS", "DUZY", "BARANIN", "SLONCE", "WYSOKI");
     private final List<String> streets = List.of("Krolicza", "Sloneczna", "Koscielna", "Czekoladowa", "Czarna", "Uliczna");
-    private final List<String> cities = List.of("Rybnik", "Katowice", "Gliwice", "Gdansk", "Pila", "Gdynia");
+    private final List<String> cities = List.of("Rybnik", "Katowice", "Gliwice", "Gdansk", "Pila", "Gdynia", "Pszow", "Raciborz");
     private final List<String> visaCards = List.of("4260973341595986","4414779511560717","4038379188710376","4262718387348743");
     private final List<String> masterCards = List.of("5211526763750005","5307750525882634","5136889847749951","5490281237631330");
     private final List<String> ibans = List.of("PL94870229753244867073832012","PL42109024028735774336755527","PL39109024029119261438748935","PL61109024024141572275677956");
 
     @PostConstruct
     public void init() {
-        Person person = Person.builder()
-                .id(EMPTY_ID)
-                .name(names.get(rand.nextInt(names.size())))
-                .lastname(lastnames.get(rand.nextInt(lastnames.size())))
-                .birthday(LocalDate.now().minusYears(25))
-                .address(Address.builder()
-                        .id(EMPTY_ID)
-                        .street(streets.get(rand.nextInt(streets.size())) + "  " + rand.nextInt(100))
-                        .zipCode("22-100")
-                        .city(cities.get(rand.nextInt(cities.size())))
-                        .state("pomorskie")
-                        .build())
-                .email("fake@email.com")
-                .phone("888444666")
-                .card(Card.builder()
-                        .cardType("VISA")
-                        .creditCardExpiry("2704")
-                        .creditCardNumber(visaCards.get(rand.nextInt(visaCards.size())))
-                        .build())
-                .iban(ibans.get(rand.nextInt(ibans.size())))
-                .build();
+        Person person = new Person(
+                EMPTY_ID,
+                names.get(rand.nextInt(names.size())),
+                lastnames.get(rand.nextInt(lastnames.size())),
+                LocalDate.now().minusYears(25),
+                new Address(
+                        EMPTY_ID,
+                        streets.get(rand.nextInt(streets.size())) + "  " + rand.nextInt(100),
+                        "22-100",
+                        cities.get(rand.nextInt(cities.size())),
+                        "pomorskie"
+                ),
+                "fake@email.com",
+                "888444666",
+                new Card(
+                        EMPTY_ID,
+                        "VISA",
+                        "2704",
+                        visaCards.get(rand.nextInt(visaCards.size()))
+                ),
+                ibans.get(rand.nextInt(ibans.size()))
+        );
         personRepository.save(person);
         log.info("PostConstruct: {}", person);
     }
 
     @Scheduled(fixedDelay = 15000)
     public void scheduled() {
-        Person person = Person.builder()
-                .id(EMPTY_ID)
-                .name(names.get(rand.nextInt(names.size())))
-                .lastname(lastnames.get(rand.nextInt(lastnames.size())))
-                .birthday(LocalDate.now().minusYears(rand.nextInt(100)))
-                .address(Address.builder()
-                        .id(EMPTY_ID)
-                        .street(streets.get(rand.nextInt(streets.size())) + "  " + rand.nextInt(100))
-                        .zipCode("44-200")
-                        .city(cities.get(rand.nextInt(cities.size())))
-                        .state("slaskie")
-                        .build())
-                .email("fake2@email.com")
-                .phone("333222111")
-                .card(Card.builder()
-                        .cardType("MASTERCARD")
-                        .creditCardExpiry("2501")
-                        .creditCardNumber(masterCards.get(rand.nextInt(masterCards.size())))
-                        .build())
-                .iban(ibans.get(rand.nextInt(ibans.size())))
-                .build();
+        Person person = new Person(
+                EMPTY_ID,
+                names.get(rand.nextInt(names.size())),
+                lastnames.get(rand.nextInt(lastnames.size())),
+                LocalDate.now().minusYears(25),
+                new Address(
+                        EMPTY_ID,
+                        streets.get(rand.nextInt(streets.size())) + "  " + rand.nextInt(100),
+                        "40-100",
+                        cities.get(rand.nextInt(cities.size())),
+                        "slaskie"
+                ),
+                "empty@gmail.pl",
+                "333222111",
+                new Card(
+                        EMPTY_ID,
+                        "MASTERCARD",
+                        "2501",
+                        masterCards.get(rand.nextInt(masterCards.size()))
+                ),
+                ibans.get(rand.nextInt(ibans.size()))
+        );
         personRepository.save(person);
         log.info("Scheduled: {}", person);
     }

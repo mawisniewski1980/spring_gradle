@@ -1,6 +1,7 @@
 package io.github.mawisniewski1980.spring_gradle.person;
 
 import io.github.mawisniewski1980.spring_gradle.model.Person;
+import io.github.mawisniewski1980.spring_gradle.model.PersonDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,37 +25,33 @@ public class PersonController {
     }
 
     @PostMapping(path = "/persons")
-    public PersonDto createPerson(@RequestBody PersonDto personDto) {
-        Person person = Person.builder()
-                .id(EMPTY_ID)
-                .name(personDto.getName())
-                .lastname(personDto.getLastname())
-                .birthday(personDto.getBirthday())
-                .address(personDto.getAddress())
-                .email(personDto.getEmail())
-                .phone(personDto.getPhone())
-                .card(personDto.getCard())
-                .iban(personDto.getIban())
-                .build();
-        personService.createPerson(person);
-        return personDto;
+    public Person createPerson(@RequestBody PersonDto personDto) {
+        return personService.createPerson(new Person(
+                EMPTY_ID,
+                personDto.getName(),
+                personDto.getLastname(),
+                personDto.getBirthday(),
+                personDto.getAddress(),
+                personDto.getEmail(),
+                personDto.getPhone(),
+                personDto.getCard(),
+                personDto.getIban()
+        ));
     }
 
     @PutMapping(path = "/persons/{id}")
-    public PersonDto updatePerson(@PathVariable Long id, @RequestBody PersonDto personDto) {
-        Person person = Person.builder()
-                .id(id)
-                .name(personDto.getName())
-                .lastname(personDto.getLastname())
-                .birthday(personDto.getBirthday())
-                .address(personDto.getAddress())
-                .email(personDto.getEmail())
-                .phone(personDto.getPhone())
-                .card(personDto.getCard())
-                .iban(personDto.getIban())
-                .build();
-        personService.updatePerson(person);
-        return personDto;
+    public Person updatePerson(@PathVariable Long id, @RequestBody PersonDto personDto) {
+        return personService.updatePerson(new Person(
+                id,
+                personDto.getName(),
+                personDto.getLastname(),
+                personDto.getBirthday(),
+                personDto.getAddress(),
+                personDto.getEmail(),
+                personDto.getPhone(),
+                personDto.getCard(),
+                personDto.getIban()
+        ));
     }
 
     @DeleteMapping(path = "/persons/{id}")
