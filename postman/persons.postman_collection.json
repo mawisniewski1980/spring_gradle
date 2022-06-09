@@ -7,12 +7,27 @@
 	"item": [
 		{
 			"name": "persons",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var phone = pm.variables.replaceIn(\"{{$randomPhoneNumber}}\");\r",
+							"pm.variables.set(\"phone\", phone.replace(\"-\",\"\").replace(\"-\",\"\"));\r",
+							"var cardTypes = [\"VISA\", \"MASTERCARD\", \"AMERICAN EXPRESS\"];\r",
+							"pm.variables.set(\"cardTypes\", cardTypes[_.random(cardTypes.length -1)]);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"name\": \"DODANY\",\r\n        \"lastname\": \"BARTLOMIEJ\",\r\n        \"birthday\": \"1997-06-04\",\r\n        \"address\": {\r\n            \"street\": \"CZEKOLADOWA 33\",\r\n            \"zipCode\": \"40-100\",\r\n            \"city\": \"Katowice\",\r\n            \"state\": \"slaskie\"\r\n        },\r\n        \"email\": \"empty@gmail.pl\",\r\n        \"phone\": \"333222111\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"MASTERCARD\",\r\n            \"creditCardExpiry\": \"2501\",\r\n            \"cardType\": \"5490281237631330\"\r\n        },\r\n        \"iban\": \"PL61109024024141572275677956\"\r\n    }",
+					"raw": "    {\r\n        \"name\": \"{{$randomFirstName}}\",\r\n        \"lastname\": \"{{$randomLastName}}\",\r\n        \"birthday\": \"1997-06-04\",\r\n        \"address\": {\r\n            \"street\": \"{{$randomStreetName}} {{$randomInt}}\",\r\n            \"zipCode\": \"40-100\",\r\n            \"city\": \"{{$randomCity}}\",\r\n            \"state\": \"slaskie\"\r\n        },\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"phone\": \"{{phone}}\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"{{$randomCreditCardMask}}{{$randomCreditCardMask}}{{$randomCreditCardMask}}{{$randomCreditCardMask}}\",\r\n            \"creditCardExpiry\": \"{{$randomCreditCardMask}}\",\r\n            \"cardType\": \"{{cardTypes}}\"\r\n        },\r\n        \"iban\": \"{{$randomBankAccountIban}}\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -33,12 +48,27 @@
 		},
 		{
 			"name": "persons/:id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var phone = pm.variables.replaceIn(\"{{$randomPhoneNumber}}\");\r",
+							"pm.variables.set(\"phone\", phone.replace(\"-\",\"\").replace(\"-\",\"\"));\r",
+							"var cardTypes = [\"VISA\", \"MASTERCARD\", \"AMERICAN EXPRESS\"];\r",
+							"pm.variables.set(\"cardTypes\", cardTypes[_.random(cardTypes.length -1)]);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\r\n        \"name\": \"ZMIENIONY\",\r\n        \"lastname\": \"BARTLOMIEJ\",\r\n        \"birthday\": \"1997-06-04\",\r\n        \"address\": {\r\n            \"street\": \"CZEKOLADOWA 33\",\r\n            \"zipCode\": \"40-100\",\r\n            \"city\": \"Katowice\",\r\n            \"state\": \"slaskie\"\r\n        },\r\n        \"email\": \"empty@gmail.pl\",\r\n        \"phone\": \"333222111\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"MASTERCARD\",\r\n            \"creditCardExpiry\": \"2501\",\r\n            \"cardType\": \"5490281237631330\"\r\n        },\r\n        \"iban\": \"PL61109024024141572275677956\"\r\n    }",
+					"raw": "    {\r\n        \"name\": \"{{$randomFirstName}}\",\r\n        \"lastname\": \"{{$randomLastName}}\",\r\n        \"birthday\": \"1980-01-08\",\r\n        \"address\": {\r\n            \"street\": \"{{$randomStreetName}} {{$randomInt}}\",\r\n            \"zipCode\": \"44-200\",\r\n            \"city\": \"{{$randomCity}}\",\r\n            \"state\": \"pomorskie\"\r\n        },\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"phone\": \"{{phone}}\",\r\n        \"card\": {\r\n            \"creditCardNumber\": \"{{$randomCreditCardMask}}{{$randomCreditCardMask}}{{$randomCreditCardMask}}{{$randomCreditCardMask}}\",\r\n            \"creditCardExpiry\": \"{{$randomCreditCardMask}}\",\r\n            \"cardType\": \"{{cardTypes}}\"\r\n        },\r\n        \"iban\": \"{{$randomBankAccountIban}}\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,7 +87,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "23"
+							"value": "1"
 						}
 					]
 				}
@@ -98,7 +128,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "23"
+							"value": "1"
 						}
 					]
 				}
@@ -130,6 +160,10 @@
 		{
 			"key": "base_url",
 			"value": "http://localhost:8080"
+		},
+		{
+			"key": "randomFirstName",
+			"value": ""
 		}
 	]
 }

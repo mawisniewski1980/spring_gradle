@@ -1,12 +1,12 @@
 package io.github.mawisniewski1980.spring_gradle.model;
 
-import io.github.mawisniewski1980.spring_gradle.model.Address;
-import io.github.mawisniewski1980.spring_gradle.model.Card;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Getter
+@Builder
 public class PersonDto {
 
     private String name;
