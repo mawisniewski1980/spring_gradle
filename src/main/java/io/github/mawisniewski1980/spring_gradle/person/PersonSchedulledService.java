@@ -51,7 +51,7 @@ public class PersonSchedulledService {
                         EMPTY_ID,
                         faker.finance().creditCard().replace("-", ""),
                         String.valueOf(faker.number().numberBetween(1000, 9999)),
-                        cardTypes[new Random().nextInt(cardTypes.length-1)]
+                        cardTypes[new Random().nextInt(cardTypes.length)]
                 ),
                 faker.finance().iban("PL")
                 )
@@ -80,7 +80,7 @@ public class PersonSchedulledService {
                                 EMPTY_ID,
                                 faker.finance().creditCard().replace("-", ""),
                                 String.valueOf(faker.number().numberBetween(1000, 9999)),
-                                cardTypes[new Random().nextInt(cardTypes.length-1)]
+                                cardTypes[new Random().nextInt(cardTypes.length)]
                         ),
                         faker.finance().iban("PL")
                 )
