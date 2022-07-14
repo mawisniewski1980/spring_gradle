@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,26 @@ public class PersonService {
 
     public List<Person> getPersons() {
         return personRepository.findAll();
+    }
+
+    public List<PersonDto> getPersonsDto() {
+        return personRepository
+                .findAll()
+                .stream()
+                .map(person ->
+                    PersonDto
+                            .builder()
+                            .name(person.getName())
+                            .lastname(person.getLastname())
+                            .birthday(person.getBirthday())
+                            .address(person.getAddress())
+                            .email(person.getEmail())
+                            .phone(person.getPhone())
+                            .card(person.getCard())
+                            .iban(person.getIban())
+                            .build()
+                )
+                .collect(Collectors.toList());
     }
 
     public Person getPerson(Long id) {

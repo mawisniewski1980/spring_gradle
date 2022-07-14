@@ -4,11 +4,13 @@ import io.github.mawisniewski1980.spring_gradle.model.Person;
 import io.github.mawisniewski1980.spring_gradle.model.PersonDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class PersonController {
 
@@ -17,6 +19,12 @@ public class PersonController {
     @GetMapping(path = "/persons")
     public ResponseEntity<List<Person>> getPersons() {
         return ResponseEntity.ok(personService.getPersons());
+    }
+
+    @GetMapping(path = "/web/persons")
+    public String getAllPersons(Model model) {
+        model.addAttribute("persons", personService.getPersonsDto());
+        return "persons";
     }
 
     @GetMapping(path = "/persons/{id}")

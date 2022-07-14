@@ -1,0 +1,9 @@
+html, body{
+    height:100vh;
+    width:100vw;
+    background-color: #c0c0c0;
+}
+
+.display-1 {
+ color: #b9b9b9;
+}
