@@ -32,10 +32,10 @@
                 <td><span th:text="${person.name}"> name </span></td>
                 <td><span th:text="${person.lastname}"> lastname </span></td>
                 <td><span th:text="${person.birthday}"> birthday </span></td>
-                <td><span th:text="${person.address.city}"> address </span></td>
+                <td><span th:text="${person.address.street}"> address </span>, <span th:text="${person.address.zipCode}"> address </span> <span th:text="${person.address.city}"> address </span>, <span th:text="${person.address.state}"> address </span></td>
                 <td><span th:text="${person.email}"> email </span></td>
                 <td><span th:text="${person.phone}"> phone </span></td>
-                <td><span th:text="${person.card.creditCardNumber}"> card </span></td>
+                <td><span th:text="${person.card.creditCardNumber}"> card </span>, <span th:text="${person.card.creditCardExpiry}"> card </span>, <span th:text="${person.card.cardType}"> card </span></td>
                 <td><span th:text="${person.iban}"> iban </span></td>
             </tr>
             </tbody>

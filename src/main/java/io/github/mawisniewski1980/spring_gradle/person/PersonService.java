@@ -1,7 +1,6 @@
 package io.github.mawisniewski1980.spring_gradle.person;
 
-import io.github.mawisniewski1980.spring_gradle.model.Person;
-import io.github.mawisniewski1980.spring_gradle.model.PersonDto;
+import io.github.mawisniewski1980.spring_gradle.model.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,10 +30,20 @@ public class PersonService {
                             .name(person.getName())
                             .lastname(person.getLastname())
                             .birthday(person.getBirthday())
-                            .address(person.getAddress())
+                            .address(AddressDto
+                                    .builder()
+                                    .street(person.getAddress().getStreet())
+                                    .zipCode(person.getAddress().getZipCode())
+                                    .city(person.getAddress().getCity())
+                                    .state(person.getAddress().getState())
+                                    .build())
                             .email(person.getEmail())
                             .phone(person.getPhone())
-                            .card(person.getCard())
+                            .card(CardDto.builder()
+                                    .creditCardExpiry(person.getCard().getCreditCardExpiry())
+                                    .creditCardNumber(person.getCard().getCreditCardNumber())
+                                    .cardType(person.getCard().getCardType())
+                                    .build())
                             .iban(person.getIban())
                             .build()
                 )
@@ -51,10 +60,19 @@ public class PersonService {
                 personDto.getName(),
                 personDto.getLastname(),
                 personDto.getBirthday(),
-                personDto.getAddress(),
+                new Address(
+                        EMPTY_ID,
+                        personDto.getAddress().getStreet(),
+                        personDto.getAddress().getZipCode(),
+                        personDto.getAddress().getCity(),
+                        personDto.getAddress().getState()
+                ),
                 personDto.getEmail(),
                 personDto.getPhone(),
-                personDto.getCard(),
+                new Card(EMPTY_ID,
+                        personDto.getCard().getCreditCardNumber(),
+                        personDto.getCard().getCreditCardExpiry(),
+                        personDto.getCard().getCardType()),
                 personDto.getIban()
         ));
     }
@@ -65,10 +83,19 @@ public class PersonService {
                 personDto.getName(),
                 personDto.getLastname(),
                 personDto.getBirthday(),
-                personDto.getAddress(),
+                new Address(
+                        id,
+                        personDto.getAddress().getStreet(),
+                        personDto.getAddress().getZipCode(),
+                        personDto.getAddress().getCity(),
+                        personDto.getAddress().getState()
+                ),
                 personDto.getEmail(),
                 personDto.getPhone(),
-                personDto.getCard(),
+                new Card(id,
+                        personDto.getCard().getCreditCardNumber(),
+                        personDto.getCard().getCreditCardExpiry(),
+                        personDto.getCard().getCardType()),
                 personDto.getIban()
         ));
     }

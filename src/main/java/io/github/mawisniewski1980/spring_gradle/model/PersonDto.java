@@ -12,10 +12,10 @@ public class PersonDto {
     private String name;
     private String lastname;
     private LocalDate birthday;
-    private Address address;
+    private AddressDto address;
     private String email;
     private String phone;
-    private Card card;
+    private CardDto card;
     private String iban;
 
 }

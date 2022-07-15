@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Persons</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/main.css}"/>
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid d-flex justify-content-center align-items-center"
+     style="height:100vh; overflow:hidden; border: 10px solid #474749">
+    <div class="row text-center d-flex align-items-center"
+         style="overflow:hidden; width:90vw; height:90vh; border: 10px solid #cecece; background: #dcdcdc">
+        <form th:action="@{/web/form}" method="post" th:object="${person}">
+
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="name" name="name" type="text" class="form-control"
+                           placeholder="name">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="lastname" name="lastname" type="text" class="form-control"
+                           placeholder="lastname">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="birthday" class="col-sm-2 col-form-label">Birthday</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="birthday" name="birthday" type="date" class="form-control"
+                           placeholder="yyyy-MM-dd">
+                </div>
+            </div>
+
+
+                <div class="row mb-3">
+                    <label for="street" class="col-sm-2 col-form-label">Street</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" id="street" name="street" type="text" class="form-control"
+                               placeholder="street">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="zipCode" class="col-sm-2 col-form-label">Zip Code</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" id="zipCode" name="zipCode" type="text" class="form-control"
+                               placeholder="zip code">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="city" class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" id="city" name="city" type="text" class="form-control"
+                               placeholder="city">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="state" class="col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-10">
+                        <select id="state" name="state" type="text" class="form-select">
+                            <option selected>...</option>
+                            <option>Dolnośląskie</option>
+                            <option>Kujawsko-pomorskie</option>
+                            <option>Lubelskie</option>
+                            <option>Lubuskie</option>
+                            <option>Łódzkie</option>
+                            <option>Małopolskie</option>
+                            <option>Mazowieckie</option>
+                            <option>Opolskie</option>
+                            <option>Podkarpackie</option>
+                            <option>Podlaskie</option>
+                            <option>Pomorskie</option>
+                            <option>Śląskie</option>
+                            <option>Świętokrzyskie</option>
+                            <option>Warmińsko-mazurskie</option>
+                            <option>Wielkopolskie</option>
+                            <option>Zachodniopomorskie</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            <div class="row mb-3">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="email" name="email" type="email" class="form-control"
+                           placeholder="email@email.com">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="phone" name="phone" type="number" class="form-control"
+                           placeholder="123123123">
+                </div>
+            </div>
+
+                <div class="row mb-3">
+                    <label for="creditCardNumber" class="col-sm-2 col-form-label">Card Number</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" id="creditCardNumber" name="creditCardNumber" type="number"
+                               class="form-control" placeholder="111111111111111">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="creditCardExpiry" class="col-sm-2 col-form-label">Card Expiry</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" id="creditCardExpiry" name="creditCardExpiry" type="number"
+                               class="form-control" placeholder="1122">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="cardType" class="col-sm-2 col-form-label">Card type</label>
+                    <div class="col-sm-10">
+                        <select id="cardType" name="cardType" type="text" class="form-select">
+                            <option selected>...</option>
+                            <option>VISA</option>
+                            <option>MASTERCARD</option>
+                            <option>AMERICAN EXPRESS</option>
+                        </select>
+                    </div>
+                </div>
+
+            <div class="row mb-3">
+                <label for="iban" class="col-sm-2 col-form-label">Iban</label>
+                <div class="col-sm-10">
+                    <input autofocus="autofocus" id="iban" name="iban" type="text" class="form-control"
+                           placeholder="iban">
+                </div>
+            </div>
+
+            <input name="submit" type="submit" class="btn btn-success mt-2" value="Registration">
+            <input name="reset" type="reset" class="btn btn-danger mt-2" value="Reset">
+
+        </form>
+
+        <div class="info bg-info mt-4" th:if="${complete}">Complete</div>
+    </div>
+</div>
+</body>
+</html>
